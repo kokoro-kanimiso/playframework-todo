@@ -18,6 +18,17 @@ public class Tasks extends Model {
 	@Required(message = "タスク内容は必須です")
 	public String label;
 	
+	public boolean editable;
+	
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
 	public static Finder<Long, Tasks> find = new Finder(Long.class, Tasks.class);
 	
 	public static List<Tasks> all(){

@@ -31,8 +31,13 @@ public class Application extends Controller {
 		
 	}
 	
-	public static Result deleteTodo(Long id) {
+	public static Result updateTodo(Long id) {
 		return TODO;
+	}
+	
+	public static Result deleteTodo(Long id) {
+		Tasks.delete(id);
+		return redirect(routes.Application.todos());
 	}
 
 }

@@ -11,8 +11,13 @@
 	<li>
 		@task.label
 		
+		@task.editable
+		
 		@form(routes.Application.deleteTodo(task.id)){
 		<input type="submit" value="削除" />
+		}
+		@form(routes.Application.updateTodo(task.id)){
+		<input type="submit" value="変更" />
 		}
 	</li>
 	}
