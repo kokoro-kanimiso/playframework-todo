@@ -9,6 +9,20 @@
 <ul>
 	@for(task <- tasks){
 	<li>
+		@if(task.editable){
+		  @form(routes.Application.rewriteTodo(task.id)){
+			<input type="text" value="@task.label" />
+			<input type="submit" value="更新" />
+		  }
+		  
+		  @task.editable
+		  
+		  @form(routes.Application.deleteTodo(task.id)){
+		<input type="submit" value="削除" />
+		}
+		  
+		}else{
+		
 		@task.label
 		
 		@task.editable
@@ -18,6 +32,7 @@
 		}
 		@form(routes.Application.updateTodo(task.id)){
 		<input type="submit" value="変更" />
+		}
 		}
 	</li>
 	}

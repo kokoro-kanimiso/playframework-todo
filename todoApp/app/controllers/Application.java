@@ -20,6 +20,8 @@ public class Application extends Controller {
 	
 	public static Result createTodo() {
 		
+		System.out.println("aaa");
+		
 		Form<Tasks> filledForm = taskForm.bindFromRequest();
 		if(filledForm.hasErrors()) {
 			return badRequest(
@@ -32,6 +34,14 @@ public class Application extends Controller {
 	}
 	
 	public static Result updateTodo(Long id) {
+		System.out.println("updateTodo start...");
+		System.out.println(taskForm);
+		Tasks.update(id);
+		return redirect(routes.Application.todos());
+	}
+	
+	public static Result rewriteTodo(Long id) {
+		System.out.println("rewtiteTodo get started..."+ "id:" + id);
 		return TODO;
 	}
 	

@@ -39,6 +39,14 @@ public class Tasks extends Model {
 		task.save();
 	}
 	
+	public static void update(Long id) {
+		Tasks task = new Tasks();
+		task = find.byId(id);
+		task.setEditable(true);
+		task.update();
+	}
+
+	
 	public static void delete(Long id) {
 		find.ref(id).delete();
 	}
