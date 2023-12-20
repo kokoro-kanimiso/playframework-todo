@@ -45,6 +45,14 @@ public class Tasks extends Model {
 		task.setEditable(true);
 		task.update();
 	}
+	
+	public static void updateForLabel(Long id,String label) {
+		Tasks task = new Tasks();
+		task = find.byId(id);
+		task.setEditable(false);
+		task.label = label;
+		task.update();
+	}
 
 	
 	public static void delete(Long id) {
