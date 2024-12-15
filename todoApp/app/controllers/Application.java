@@ -13,6 +13,10 @@ public class Application extends Controller {
         return redirect(routes.Application.todos());
     }
 
+	public static Result todos2() {
+		return ok(views.html.index.render(Tasks.all(), taskForm));
+	}
+
       
 	public static Result todos() {
 		return ok(views.html.index.render(Tasks.all(), taskForm));
@@ -20,7 +24,6 @@ public class Application extends Controller {
 	
 	public static Result createTodo() {
 		
-		System.out.println("createTodo get started...");
 		System.out.println(taskForm.bindFromRequest());
 		
 		Form<Tasks> filledForm = taskForm.bindFromRequest();
@@ -35,14 +38,12 @@ public class Application extends Controller {
 	}
 	
 	public static Result updateTodo(Long id) {
-		System.out.println("updateTodo start...");
 		System.out.println(taskForm);
 		Tasks.update(id);
 		return redirect(routes.Application.todos());
 	}
 	
 	public static Result rewriteTodo(Long id) {
-		System.out.println("rewtiteTodo get started...");
 		if(taskForm.bindFromRequest().hasErrors()) {
 			return badRequest(views.html.index.render(Tasks.all(), taskForm.bindFromRequest()));
 			
